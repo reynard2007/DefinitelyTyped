@@ -12,6 +12,8 @@
 // Hierarchy
 // -----------------------------------------------------------------------
 
+type ValidDatumType = {} | any[] | number | string | boolean;
+
 export interface HierarchyLink<Datum> {
     /**
      * The source of the link.
@@ -154,7 +156,7 @@ export interface HierarchyNode<Datum> {
  * Must return an array of data representing the children, and return null or undefined if the current datum has no children.
  * If children is not specified, it defaults to: `(d) => d.children`.
  */
-export function hierarchy<Datum>(data: Datum, children?: (d: Datum) => (Datum[] | null | undefined)): HierarchyNode<Datum>;
+export function hierarchy<Datum extends ValidDatumType>(data: Datum, children?: (d: Datum) => (Datum[] | null | undefined)): HierarchyNode<Datum>;
 
 // -----------------------------------------------------------------------
 // Stratify
